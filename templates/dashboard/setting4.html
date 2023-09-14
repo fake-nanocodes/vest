@@ -1,0 +1,67 @@
+{% extends 'dashboard/main.html' %}
+
+{% load static %}
+
+{% block content %}
+   <div class="content-page">
+    <div class="content">
+     <div class="container-fluid">
+      <div class="row">
+      </div>
+      <div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="usd" role="dialog" style="display: none" tabindex="-1">
+      </div>
+      <div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="del_tra" role="dialog" style="display: none" tabindex="-1">
+      </div>
+      <button data-target="#usd" data-toggle="modal" id="show_tra" style="display: none;" type="button">
+      </button>
+      <button data-target="#del_tra" data-toggle="modal" id="show_del" style="display: none;" type="button">
+      </button>
+      <div class="row">
+         <div class='text-center px-2 py-3 w-100'> {% for message in messages %} <p class="text-center w-100" style="font-size:1.1rem;">{{message}}</p> {% endfor %}</div>
+
+       <div class="col-xl-12">
+        <div class="card">
+         <div class="card-header bg-primary">
+          <h3 class="card-title text-white">
+           Set Charges
+          </h3>
+         </div>
+         <div class="card-body">
+          <form action="" method="post">
+           <div class="row">
+            <div class="col-md-6">
+             <div class="form-group">
+              <label>
+               Deposit -
+               <small>
+                0 %
+               </small>
+              </label>
+              <input class="form-control" name="dep" type="number" value="0"/>
+             </div>
+            </div>
+            <div class="col-md-6">
+             <div class="form-group">
+              <label>
+               Withdrawal -
+               <small>
+                1 %
+               </small>
+              </label>
+              <input class="form-control" name="with" type="number" value="1"/>
+             </div>
+            </div>
+           </div>
+           <div class="text-center">
+            <button class="btn btn-primary waves-effect waves-light" name="update_charge" type="submit">
+             Update Charges
+            </button>
+           </div>
+          </form>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    {% endblock content %}

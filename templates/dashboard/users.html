@@ -1,0 +1,220 @@
+{% extends 'dashboard/main.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="content-page">
+   <div class="content">
+      <div class="container-fluid">
+         <div class="row">
+         </div>
+         <div class="row">
+        <div class='text-center px-2 py-3 w-100'> {% for message in messages %} <p class="text-center w-100" style="font-size:1.1rem;">{{message}}</p> {% endfor %}</div>
+
+            <div class="col-lg-12">
+               <div class="card">
+                  <div class="card-header bg-primary">
+                     <h3 class="card-title text-white">
+                        All Accounts
+                     </h3>
+                  </div>
+                  <div class="card-body">
+                     <div class="row">
+                        <div class="col-md-12 col-sm-12 col-12">
+                           <div class="table-responsive">
+                              <table class="table table-striped table-bordered nowrap" id="datatable"
+                                 style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                 <thead>
+                                    <tr>
+                                       <th>
+                                          SN
+                                       </th>
+                                       <th>
+                                          Username
+                                       </th>
+                                       <th>
+                                          Email
+                                       </th>
+                                       <th>
+                                          Country
+                                       </th>
+                                       <th>
+                                          Balance
+                                       </th>
+                                       <th>
+                                          Status
+                                       </th>
+                                       <th>
+                                          View
+                                       </th>
+                                    </tr>
+                                 </thead>
+
+                                 <tbody>
+                                    {% for profile in profiles %}
+                                    <tr>
+                                       <td>
+                                          {{ forloop.counter }}
+                                       </td>
+                                       <td>
+                                          {{ profile.user.username }}
+                                       </td>
+                                       <td>
+                                          <a class="__cf_email__"
+                                           >
+                                             {{ profile.user.email }}
+                                          </a>
+                                       </td>
+                                       <td>
+                                          {{ profile.country }}
+                                       </td>
+                                       <td>
+                                          $ {{ profile.available_balance }}
+                                       </td>
+                                       <td>
+                                          {% if profile.user.is_active %}
+                                          <span class="badge badge-success">
+                                             Active
+                                          </span>
+                                          {% else %}
+                                          <span class="badge badge-danger">
+                                             Active
+                                          </span>
+                                          {% endif %}
+                                       </td>
+                                       <td>
+                                          <div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade"
+                                             id="us437" role="dialog" style="display: none" tabindex="-1">
+                                             <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                   <div class="">
+                                                      <button aria-label="Close" class="close" data-dismiss="modal"
+                                                         type="button">
+                                                         <span aria-hidden="true">
+                                                            ×
+                                                         </span>
+                                                      </button>
+                                                   </div>
+                                                   <div class="modal-body">
+                                                      <div class="">
+                                                         <div class="card">
+                                                            <div class="card-header bg-primary">
+                                                               <h3 class="card-title text-white">
+                                                                  Olgafernadez
+                                                                  <span class="float-right">
+                                                                     Bal: $ 8,939.84
+                                                                  </span>
+                                                               </h3>
+                                                            </div>
+                                                            <div class="card-body">
+                                                               <div class="about-info-p">
+                                                                  <strong>
+                                                                     Total Deposit
+                                                                  </strong>
+                                                                  <br />
+                                                                  <p class="text-muted">
+                                                                     $ 200.00
+                                                                  </p>
+                                                               </div>
+                                                               <div class="about-info-p">
+                                                                  <strong>
+                                                                     Total Withdraw
+                                                                  </strong>
+                                                                  <br />
+                                                                  <p class="text-muted">
+                                                                     $ 0.00
+                                                                  </p>
+                                                               </div>
+                                                               <div class="about-info-p">
+                                                                  <strong>
+                                                                     Registered on
+                                                                  </strong>
+                                                                  <br />
+                                                                  <p class="text-muted">
+                                                                     02 Dec 2021 11:50:21 pm
+                                                                  </p>
+                                                               </div>
+                                                               <div class="about-info-p m-b-0">
+                                                                  <strong>
+                                                                     Last Seen
+                                                                  </strong>
+                                                                  <br />
+                                                                  <p class="text-muted">
+                                                                     01 Jan 1970 01:00:00 am
+                                                                  </p>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="modal-footer">
+                                                      <div aria-hidden="true" aria-labelledby="full-width-modalLabel"
+                                                         class="modal fade" id="d437" role="dialog"
+                                                         style="display: none" tabindex="-1">
+                                                         <div class="modal-dialog modal-full">
+                                                            <div class="modal-content">
+                                                               <div class="">
+                                                                  <button aria-label="Close" class="close"
+                                                                     data-dismiss="modal" type="button">
+                                                                     <span aria-hidden="true">
+                                                                        ×
+                                                                     </span>
+                                                                  </button>
+                                                               </div>
+                                                               <div class="modal-body">
+                                                                  <h4>
+                                                                     Are you ready to delete this user?
+                                                                  </h4>
+                                                               </div>
+                                                               <div class="modal-footer">
+                                                                  <button class="btn btn-secondary waves-effect"
+                                                                     data-dismiss="modal" type="button">
+                                                                     No
+                                                                  </button>
+                                                                  <a class="btn btn-pink waves-effect"
+                                                                     href="?d=qRSOzsZNeU43728368otPi1">
+                                                                     Delete
+                                                                  </a>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                      </div>
+                                                      <button class="btn btn-pink waves-effect waves-light"
+                                                         data-target="#d437" data-toggle="modal" type="button">
+                                                         Delete User
+                                                      </button>
+                                                      <a class="btn btn-info waves-effect waves-light"
+                                                         href="?dac=YwVh70ZHgt43780266QZnFg">
+                                                         Deactivate User
+                                                      </a>
+                                                      <a class="btn btn-success waves-effect" data-dismiss="modal"
+                                                         href="#">
+                                                         Send Bonus
+                                                      </a>
+                                                      <a class="btn btn-warning waves-effect" data-dismiss="modal"
+                                                         href="#">
+                                                         Send Penalty
+                                                      </a>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <a class="btn btn-sm btn-primary btn-custom"
+                                             href="/user/dashboard/user/{{profile.id}}">
+                                             View
+                                          </a>
+                                       </td>
+                                    </tr>
+                                    {% empty %}{% endfor %}
+                                 </tbody>
+                              </table>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   {% endblock content %}

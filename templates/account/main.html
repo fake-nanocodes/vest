@@ -1,0 +1,370 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html class="js" lang="zxx">
+ <!-- Mirrored from primefinanceonline.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 29 Nov 2022 12:48:00 GMT -->
+ <!-- Added by HTTrack -->
+ <meta content="text/html;charset=utf-8" http-equiv="content-type"/>
+ <!-- /Added by HTTrack -->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="" name="description"/>
+  <!-- Fav Icon  -->
+  <link href="{{ website.logo.url}}" rel="shortcut icon"/>
+  <!-- Site Title  -->
+  <title>
+   www.primefinanceonline.com | {% block head_title %}{% trans "Sign In" %}{% endblock %}
+  </title>
+  <meta href="https://uniquehyips.com/" name="designer"/>
+  <!-- Vendor Bundle CSS -->
+  <link href="{% static 'css/vendor.bundle.css' %}" rel="stylesheet"/>
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet"/>
+  <link href="{% static 'css/theme.css' %}" rel="stylesheet"/>
+  <div align="right" class="lang wow bounceIn">
+   <div id="google_translate_element">
+   </div>
+   <script>
+    function googleTranslateElementInit() {
+                new google.translate.TranslateElement({
+                    pageLanguage: 'en'
+                }, 'google_translate_element');
+            }
+   </script>
+   <script src="{% static '../translate.google.com/translate_a/elementa0d8.js?cb=googleTranslateElementInit' %}">
+   </script>
+  </div>
+
+  <style>
+    input[type=password],input[type=email],input[type=text] {
+      display: block;
+      width: 100%;
+      height: 34px;
+      padding: 6px 12px;
+      font-size: 14px;
+      line-height: 1.42857143;
+      color: #555;
+      background-color: #fff;
+      background-image: none;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding-left: 20px;
+      height: 50px;
+      margin-bottom: 10px;
+      background: #f8f8f8;
+      border-color: #efefef;
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      box-shadow: none;
+    }
+  </style>
+ </head>
+ <body>
+
+  <!-- Header -->
+  <header class="site-header header-s1 is-sticky">
+   <!-- Navbar -->
+   <div class="navbar navbar-primary">
+    <div class="container relative">
+     <!-- Logo -->
+     <a class="navbar-brand" href="/">
+      <img alt="logo" class="logo logo-dark" src="{{ website.logo.url}}"/>
+      <img alt="logo" class="logo logo-light" src="{{ website.logo.url}}"/>
+     </a>
+     <!-- #end Logo -->
+     <div class="navbar-header">
+      <button aria-expanded="false" class="navbar-toggle collapsed" data-target="#mainnav" data-toggle="collapse" type="button">
+       <span class="sr-only">
+        Menu
+       </span>
+       <span class="icon-bar">
+       </span>
+       <span class="icon-bar">
+       </span>
+       <span class="icon-bar">
+       </span>
+      </button>
+      <div class="quote-btn">
+       <a class="btn" href="/accounts/login">
+        <span>
+         Register
+        </span>
+       </a>
+      </div>
+      <div class="quote-btn">
+       <a class="btn" href="/accounts/signup">
+        <span>
+         Login
+        </span>
+       </a>
+      </div>
+     </div>
+     <!-- MainNav -->
+     <nav class="navbar-collapse collapse" id="mainnav">
+      <ul class="nav navbar-nav">
+       <li>
+        <a href="/">
+         Home
+        </a>
+       </li>
+       <li>
+        <a href="/about">
+         About Us
+        </a>
+       </li>
+       <li>
+        <a href="/payment">
+         Payments
+        </a>
+       </li>
+       <li>
+        <a href="/plans">
+         Investment Plans
+        </a>
+       </li>
+       <li>
+        <a href="/faq">
+         Faq
+        </a>
+       </li>
+       <li>
+        <a href="/contact">
+         Contact
+        </a>
+       </li>
+       <li class="quote-btn hidden-xs hidden-sm">
+        <a class="btn" href="/accounts/signup">
+         get started
+        </a>
+       </li>
+      </ul>
+     </nav>
+     <!-- #end MainNav -->
+    </div>
+   </div>
+   <!-- End Navbar -->
+   <!-- Section -->
+   <div class="section section-pad">
+    <div class="container">
+     <div class="tab-custom">
+      <div class="row">
+       <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+        <ul class="nav nav-tabs ucap" id="loginreg-form">
+         <li class="active">
+          <a data-toggle="tab" href="#tab1">
+            <h2>{% block head %}{% endblock head %}</h2>
+          </a>
+         </li>
+        </ul>
+       </div>
+      </div>
+      <div class="gaps size-2x">
+      </div>
+      <!-- Tab panes -->
+      <div class="tab-content no-pd">
+       <div class="tab-pane fade in active" id="tab1">
+        <div class="row">
+         <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+          <h3 class="heading-lead center">
+            
+          </h3>
+          <script language="javascript">
+           function checkform() {
+  if (document.mainform.username.value=='') {
+    alert("Please type your username!");
+    document.mainform.username.focus();
+    return false;
+  }
+  if (document.mainform.password.value=='') {
+    alert("Please type your password!");
+    document.mainform.password.focus();
+    return false;
+  }
+  return true;
+}
+          </script>
+          {% if messages %}
+          <div class="py-3">
+            <strong>Messages:</strong>
+            <ul>
+              {% for message in messages %}
+              <li>{{message}}</li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% endif %}
+          {% block content %}
+
+
+{% endblock %}
+          
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <!-- End Section -->
+   <!-- Section Footer -->
+   <div class="footer-section section section-pad-md light bg-footer">
+    <div class="imagebg footerbg">
+     <img alt="footer-bg" src="{% static 'images/footer-bg.png' %}"/>
+    </div>
+    <div class="container">
+     <div class="row">
+      <div class="col-md-3 col-sm-6 wgs-box res-m-bttm-lg">
+       <!-- Each Widget -->
+       <div class="wgs-footer wgs-menu">
+        <h5 class="wgs-title ucap">
+         Main Navigation
+        </h5>
+        <div class="wgs-content">
+         <ul class="menu">
+          <li>
+           <a href="/">
+            Home
+           </a>
+          </li>
+          <li>
+           <a href="/about">
+            About Us
+           </a>
+          </li>
+          <li>
+           <a href="/payment">
+            Payments
+           </a>
+          </li>
+          <li>
+           <a href="/plans">
+            Investment Plans
+           </a>
+          </li>
+          <li>
+           <a href="/contact">
+            Support
+           </a>
+          </li>
+         </ul>
+        </div>
+       </div>
+       <!-- End Widget -->
+      </div>
+      <div class="col-md-3 col-sm-6 wgs-box res-m-bttm-lg">
+       <!-- Each Widget -->
+       <div class="wgs-footer wgs-menu">
+        <h5 class="wgs-title ucap">
+        </h5>
+        <div class="wgs-content">
+         <ul class="menu">
+         </ul>
+        </div>
+       </div>
+       <!-- End Widget -->
+      </div>
+      <div class="col-md-3 col-sm-6 wgs-box res-m-bttm-lg">
+      </div>
+      <div class="col-md-3 col-sm-6 wgs-box res-m-bttm">
+       <!-- Each Widget -->
+       <div class="wgs-footer wgs-contact">
+        <h5 class="wgs-title ucap">
+         get in touch
+        </h5>
+        <div class="wgs-content">
+         <ul class="wgs-contact-list">
+          <li>
+           <span class="pe pe-7s-map-marker">
+           </span>
+          
+          </li>
+          <li>
+           <span class="pe pe-7s-global">
+           </span>
+           Email :
+           <a href="mailto:mail@primefinanceonline">
+            mail@primefinanceonline
+           </a>
+          </li>
+         </ul>
+        </div>
+       </div>
+       <!-- End Widget -->
+      </div>
+     </div>
+    </div>
+   </div>
+   <!-- End Section -->
+   <!-- Copyright -->
+   <div class="copyright light">
+    <div class="container">
+     <div class="row">
+      <div class="site-copy col-sm-7">
+       <p>
+        Copyright © 2021 www.primefinanceonline.com.
+       </p>
+      </div>
+      <div class="col-sm-5 text-right mobile-left">
+       <ul class="social">
+        <li>
+         <a href="#">
+          <em class="fa fa-facebook">
+          </em>
+         </a>
+        </li>
+        <li>
+         <a href="#">
+          <em class="fa fa-twitter">
+          </em>
+         </a>
+        </li>
+        <li>
+         <a href="#">
+          <em class="fa fa-linkedin">
+          </em>
+         </a>
+        </li>
+        <li>
+         <a href="#">
+          <em class="fa fa-google-plus">
+          </em>
+         </a>
+        </li>
+       </ul>
+      </div>
+     </div>
+    </div>
+   </div>
+   <!-- End Copyright -->
+   <!-- Preloader !remove please if you do not want -->
+   <div id="preloader">
+    <div id="status">
+    </div>
+   </div>
+   <!-- Preloader End -->
+   <!-- JavaScript
+		================================================== -->
+   <!-- Placed at the end of the document so the pages load faster -->
+   <script src="{% static 'js/jquery.bundle.js' %}">
+   </script>
+   <script src="{% static 'js/script.js' %}">
+   </script>
+   <script>
+    (function(b, i, t, C, O, I, N) {
+            window.addEventListener('load', function() {
+                if (b.getElementById(C)) return;
+                I = b.createElement(i), N = b.getElementsByTagName(i)[0];
+                I.src = t;
+                I.id = C;
+                N.parentNode.insertBefore(I, N);
+            }, false)
+        })(document, 'script', '../widgets.bitcoin.com/widget.js', 'btcwdgt');
+   </script>
+  </header>
+ </body>
+ <!-- Mirrored from centennial-investment.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 29 Nov 2022 12:48:00 GMT -->
+</html>
+<script type="text/javascript">
+ window.$crisp=[];window.CRISP_WEBSITE_ID="d86a790f-0e46-4347-be93-b06251c8a518";(function(){ d=document;s=d.createElement("script"); s.src="../client.crisp.chat/l.js"; s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();
+</script>

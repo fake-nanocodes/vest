@@ -1,0 +1,320 @@
+{% extends 'dashboard/main.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<style>
+  /* The Modal (background) */
+  .modals {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .modals-content {
+    background-color: #fefefe;
+    margin: 2rem auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }</style>
+   <div class="content-page">
+    <div class="content">
+     <div class="container-fluid">
+      <div class="row">
+      </div>
+      <div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="usd" role="dialog" style="display: none" tabindex="-1">
+      </div>
+      <div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="del_tra" role="dialog" style="display: none" tabindex="-1">
+      </div>
+      <button data-target="#usd" data-toggle="modal" id="show_tra" style="display: none;" type="button">
+      </button>
+      <button data-target="#del_tra" data-toggle="modal" id="show_del" style="display: none;" type="button">
+      </button>
+      <div class="row">
+        <div class='text-center px-2 py-3 w-100'> {% for message in messages %} <p class="text-center w-100" style="font-size:1.1rem;">{{message}}</p> {% endfor %}</div>
+
+       <div class="col-lg-12">
+        <div class="card">
+         <div class="card-header bg-primary">
+          <h3 class="card-title text-white">
+           Completed Transactions
+          </h3>
+         </div>
+         <div class="card-body">
+          <div class="row">
+           <div class="col-md-12 col-sm-12 col-12">
+            <div class="table-responsive">
+             <table class="table table-striped table-bordered nowrap" id="datatable" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+              <thead>
+               <tr>
+                <th>
+                 SN
+                </th>
+                <th>
+                 Sender
+                </th>
+                <th>
+                 Amount
+                </th>
+                <th>
+                 Time
+                </th>
+                <th>
+                 Type
+                </th>
+                <th>
+                 Status
+                </th>
+                <th>
+                 View/Delete
+                </th>
+               </tr>
+              </thead>
+              <tbody>
+               {% for transaction in transactions %}<tr>
+                <td>
+                 {{ forloop.counter }}
+                </td>
+                <td>
+                 {{transaction.profile.user.username}}
+                </td>
+                <td>
+                 $ {{ transaction.usdt_amount }}
+                </td>
+                <td>
+                 {{ transaction.created}}
+                </td>
+                <td>
+                  {{ transaction }}
+                </td>
+                <td>
+                  {% if transaction.verified %} Verified {% else %} Not Verified {% endif %} 
+                </td>
+                <td>
+                  <button class="btn btn-primary openModalBtn">View</button>
+        
+                  <div class="modals">
+                          <div class="modals-content">
+                          <span class="close">&times;</span>
+                          <h3>View Transaction</h3>
+                          <div class="card-body">
+
+                              <div class="form-group field-profile">
+                                  <div class="row">
+                                      
+                                          <label class="col-sm-3 text-left" for="id_profile">
+                                              Profile
+                                              
+                                          </label>
+                                          <div class=" col-sm-7 
+                                                        field-profile
+                                                       
+                                                       
+                                                       ">
+                                              
+                                                  <div class="readonly"><a href="/admin/userprofile/profile/{{profile.id}}/change/">{{profile.user.username}}</a></div>
+                                              
+                                              
+                                              
+                                              
+                                          </div>
+                                      
+                                  </div>
+                              </div><div class="form-group field-usdt_amount">
+                                  <div class="row">
+                                      
+                                          <label class="col-sm-3 text-left" for="id_usdt_amount">
+                                              Usdt amount
+                                              
+                                          </label>
+                                          <div class=" col-sm-7 
+                                                        field-usdt_amount
+                                                       
+                                                       
+                                                       ">
+                                              
+                                                  <div class="readonly">{{transaction.usdt_amount}}</div>
+                                              
+                                              
+                                              
+                                              
+                                          </div>
+                                      
+                                  </div>
+                              </div>
+                              
+                              <div class="form-group field-transaction_type">
+                                  <div class="row">
+                                      
+                                          <label class="col-sm-3 text-left" for="id_transaction_type">
+                                              Transaction type
+                                              
+                                          </label>
+                                          <div class=" col-sm-7 
+                                                        field-transaction_type
+                                                       
+                                                       
+                                                       ">
+                                              
+                                                  <div class="readonly">{{transaction.transaction_type}}</div>
+                                              
+                                              
+                                              
+                                              
+                                          </div>
+                                      
+                                  </div>
+                              </div>
+                              
+                              <div class="form-group field-description">
+                                  <div class="row">
+                                      
+                                          <label class="col-sm-3 text-left" for="id_description">
+                                              Description
+                                              
+                                          </label>
+                                          <div class=" col-sm-7 
+                                                        field-description
+                                                       
+                                                       
+                                                       ">
+                                              
+                                                  <div class="readonly">{{transaction.description}}</div>
+                                              
+                                              
+                                              
+                                              
+                                          </div>
+                                      
+                                  </div>
+                              </div>
+                              
+                              <div class="form-group field-created">
+                                  <div class="row">
+                                      
+                                          <label class="col-sm-3 text-left" for="id_created">
+                                              Created
+                                              
+                                          </label>
+                                          <div class=" col-sm-7 
+                                                        field-created
+                                                       
+                                                       
+                                                       ">
+                                              
+                                                  <div class="readonly">{{transaction.created}}</div>
+                                              
+                                              
+                                              
+                                              
+                                          </div>
+                                      
+                                  </div>
+                              </div>
+                              
+                              <div class="form-group field-verified">
+                                  <div class="row">
+                                      
+                                          <label class="col-sm-3 text-left" for="id_verified">
+                                              Verified
+                                              
+                                          </label>
+                                          <div class=" col-sm-7 
+                                                        field-verified
+                                                       
+                                                       
+                                                       ">
+                                                      {% if transaction.verified %}
+                                                      
+                                                      <div class="readonly"><img src="/static/admin/img/icon-yes.svg" alt="True"></div>
+                                                      {% else %}
+                                                      <div class="readonly"><img src="/static/admin/img/icon-no.svg" alt="True"></div>
+                                                      {% endif %}
+                                              
+                                                  
+                                              
+                                              
+                                              
+                                              
+                                          </div>
+                                      
+                                  </div>
+                              </div>
+                              
+                          
+                          
+                          
+                              
+                          
+                          
+                                                      </div>
+                          
+                          <div>              
+                          </div>
+                          </div>
+                  </div>
+                </td>
+               </tr>{% empty %}{% endfor %}
+              </tbody>
+             </table>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+
+    <script>
+      var modalButtons = document.querySelectorAll(".openModalBtn");
+      var modals = document.querySelectorAll(".modals");
+      var closeButtons = document.querySelectorAll(".close");
+      
+      modalButtons.forEach(function(btn, index) {
+        btn.onclick = function() {
+          modals[index].style.display = "block";
+        }
+      });
+      
+      closeButtons.forEach(function(closeBtn, index) {
+        closeBtn.onclick = function() {
+          modals[index].style.display = "none";
+        }
+      });
+      
+      window.onclick = function(event) {
+        modals.forEach(function(modal) {
+          if (event.target === modal) {
+            modal.style.display = "none";
+          }
+        });
+      }
+      </script>
+    {% endblock content %}

@@ -1,0 +1,54 @@
+{% extends 'dashboard/main.html' %}
+
+{% load static %}
+
+{% block content %}
+   <div class="content-page">
+    <div class="content">
+     <div class="container-fluid">
+      <div class="row">
+      </div>
+      <div class="row">
+        <div class='text-center px-2 py-3 w-100'> {% for message in messages %} <p class="text-center w-100" style="font-size:1.1rem;">{{message}}</p> {% endfor %}</div>
+
+       <div class="col-xl-12">
+        <div class="card">
+         <div class="card-header bg-primary">
+          <h3 class="card-title text-white">
+           Bulk Message
+          </h3>
+         </div>
+         <div class="card-body">
+          <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+           <div class="row">
+            <div class="col-md-12">
+             <div class="form-group">
+              <label>
+               Subject
+              </label>
+              <input class="form-control" name="subject" placeholder="Subject" type="text"/>
+             </div>
+            </div>
+            <div class="col-md-12">
+             <div class="form-group">
+              <label>
+               Message
+              </label>
+              <textarea class="form-control" name="message" placeholder="Write Message" rows="5" type="text"></textarea>
+             </div>
+            </div>
+           </div>
+           <div class="text-center">
+            <button class="btn btn-primary waves-effect waves-light" name="send_bulk" type="submit">
+             Send Message To Users
+            </button>
+           </div>
+          </form>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   {% endblock content %}

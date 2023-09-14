@@ -1,0 +1,453 @@
+{% extends 'dashboard/main.html' %}
+
+{% load humanize %}
+{% load mathfilters %}
+{% load static %}
+
+{% block content %}
+<div class="content-page">
+  <div class="content">
+    <div class="container-fluid">
+      <div class="row">
+      </div>
+      <div class="row">
+        <div class="col-md-6 col-xl-3">
+          <div class="mini-stat clearfix bx-shadow bg-white">
+            <span class="mini-stat-icon bg-primary">
+              <i class="fa fa-users">
+              </i>
+            </span>
+            <div class="mini-stat-info text-right text-dark">
+              <span class="counter text-dark">
+                U
+              </span>
+              Total Users
+            </div>
+            <div class="tiles-progress">
+              <div class="m-t-20">
+                <h5 class="text-uppercase">
+                  Total Users
+                  <span class="pull-right">
+                    {{ total_users }}
+                  </span>
+                </h5>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-xl-3">
+          <div class="mini-stat clearfix bx-shadow bg-white">
+            <span class="mini-stat-icon bg-success">
+              <i aria-hidden="true" class="fa fa-usd">
+              </i>
+            </span>
+            <div class="mini-stat-info text-right text-dark">
+              <span class="counter text-dark">
+                D
+              </span>
+              Total Deposit
+            </div>
+            <div class="tiles-progress">
+              <div class="m-t-20">
+                <h5 class="text-uppercase">
+                  USDT Value
+                  <span class="pull-right">
+                    {{total_deposit | intcomma}}
+                  </span>
+                </h5>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-xl-3">
+          <div class="mini-stat clearfix bx-shadow bg-white">
+            <span class="mini-stat-icon bg-warning">
+              <i aria-hidden="true" class="fa fa-usd">
+              </i>
+            </span>
+            <div class="mini-stat-info text-right text-dark">
+              <span class="counter text-dark">
+                W
+              </span>
+              Total Withdrawal
+            </div>
+            <div class="tiles-progress">
+              <div class="m-t-20">
+                <h5 class="text-uppercase">
+                  USDT Value
+                  <span class="pull-right">
+                    {{ total_withdrawal | intcomma}}
+                  </span>
+                </h5>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-xl-3">
+          <div class="mini-stat clearfix bx-shadow bg-white">
+            <span class="mini-stat-icon bg-info">
+              <i aria-hidden="true" class="fa fa-usd">
+              </i>
+            </span>
+            <div class="mini-stat-info text-right text-dark">
+              <span class="counter text-dark">
+                B
+              </span>
+              System Balance
+            </div>
+            <div class="tiles-progress">
+              <div class="m-t-20">
+                <h5 class="text-uppercase">
+                  USDT Value
+                  <span class="pull-right">
+                    {{ total_balance | intcomma}}
+                  </span>
+                </h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-header bg-primary">
+              <h3 class="card-title text-white">
+                Transaction Summary
+              </h3>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-12 col-sm-12 col-12">
+                  <div class="table-responsive">
+                    <table class="table table-striped table-bordered nowrap"
+                      style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                      <thead>
+                        <tr>
+                          <th class="text-center text-primary">
+                            24 Hours
+                          </th>
+                          <th class="text-center text-primary">
+                            7 days
+                          </th>
+                          <th class="text-center text-primary">
+                            Last Month
+                          </th>
+                          <th class="text-center text-primary">
+                            Year
+                          </th>
+                          <th class="text-center text-primary">
+                            Total
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <b>
+                              In
+                              <span style="float: right;">
+                                Out
+                              </span>
+                            </b>
+                          </td>
+                          <td>
+                            <b>
+                              In
+                              <span style="float: right;">
+                                Out
+                              </span>
+                            </b>
+                          </td>
+                          <td>
+                            <b>
+                              In
+                              <span style="float: right;">
+                                Out
+                              </span>
+                            </b>
+                          </td>
+                          <td>
+                            <b>
+                              In
+                              <span style="float: right;">
+                                Out
+                              </span>
+                            </b>
+                          </td>
+                          <td>
+                            <b>
+                              In
+                              <span style="float: right;">
+                                Out
+                              </span>
+                            </b>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            $ {{twenty_four_in | intcomma}}
+                            <span style="float: right;">
+                              $ {{twenty_four_out | intcomma}}
+                            </span>
+                          </td>
+                          <td>
+                            $ {{seven_days_in | intcomma}}
+                            <span style="float: right;">
+                              $ {{seven_days_out | intcomma}}
+                            </span>
+                          </td>
+                          <td>
+                            $ {{thirty_days_in | intcomma}}
+                            <span style="float: right;">
+                              $ {{thirty_days_out | intcomma}}
+                            </span>
+                          </td>
+                          <td>
+                            $ {{one_year_in | intcomma}}
+                            <span style="float: right;">
+                              $ {{one_year_out | intcomma}}
+                            </span>
+                          </td>
+                          <td>
+                            $ {{total_deposit | intcomma}}
+                            <span style="float: right;">
+                              $ {{ total_withdrawal | intcomma}}
+                            </span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center text-primary">
+                            <b>
+                              $ {{ twenty_four_balance | intcomma }}
+                          
+                            </b>
+                          </td>
+                          <td class="text-center text-primary">
+                            <b>
+                              $ {{ seven_days_balance | intcomma }}
+                            </b>
+                          </td>
+                          <td class="text-center text-primary">
+                            <b>
+                              $ {{ thirty_days_balance | intcomma }}
+                            </b>
+                          </td>
+                          <td class="text-center text-primary">
+                            <b>
+                              $ {{ one_year_balance | intcomma }}
+                            </b>
+                          </td>
+                          <td class="text-center text-primary">
+                            <b>
+                              $ {{ total_balance | intcomma}}
+                            </b>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 col-xl-3">
+          <div class="mini-stat clearfix bx-shadow bg-white">
+            <span class="mini-stat-icon bg-success">
+              <i aria-hidden="true" class="fa fa-usd">
+              </i>
+            </span>
+            <div class="mini-stat-info text-right text-dark">
+              <span class="counter text-dark">
+                D
+              </span>
+              Verified Deposit
+            </div>
+            <div class="tiles-progress">
+              <div class="m-t-20">
+                <h5 class="text-uppercase">
+                  USDT Value
+                  <span class="pull-right">
+                    {{ total_deposit | intcomma}}
+                  </span>
+                </h5>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-xl-3">
+          <div class="mini-stat clearfix bx-shadow bg-white">
+            <span class="mini-stat-icon bg-warning">
+              <i aria-hidden="true" class="fa fa-usd">
+              </i>
+            </span>
+            <div class="mini-stat-info text-right text-dark">
+              <span class="counter text-dark">
+                PD
+              </span>
+              Pending Deposit
+            </div>
+            <div class="tiles-progress">
+              <div class="m-t-20">
+                <h5 class="text-uppercase">
+                  USDT Value
+                  <span class="pull-right">
+                    {{ total_unverified_deposit | intcomma}}
+                  </span>
+                </h5>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-xl-3">
+          <div class="mini-stat clearfix bx-shadow bg-white">
+            <span class="mini-stat-icon bg-purple">
+              <i aria-hidden="true" class="fa fa-usd">
+              </i>
+            </span>
+            <div class="mini-stat-info text-right text-dark">
+              <span class="counter text-dark">
+                PD
+              </span>
+              Pen. Withdrawal
+            </div>
+            <div class="tiles-progress">
+              <div class="m-t-20">
+                <h5 class="text-uppercase">
+                  USDT Value
+                  <span class="pull-right">
+                    {{ total_unverified_withdrawal | intcomma}}
+                  </span>
+                </h5>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-xl-3">
+          <div class="mini-stat clearfix bx-shadow bg-white">
+            <span class="mini-stat-icon bg-primary">
+              <i aria-hidden="true" class="fa fa-usd">
+              </i>
+            </span>
+            <div class="mini-stat-info text-right text-dark">
+              <span class="counter text-dark">
+                B
+              </span>
+              Total Bonus
+            </div>
+            <div class="tiles-progress">
+              <div class="m-t-20">
+                <h5 class="text-uppercase">
+                  USDT Value
+                  <span class="pull-right">
+                    {{ total_bonus | intcomma}}
+                  </span>
+                </h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-8">
+          <div class="card">
+            <div class="card-header bg-primary">
+              <h3 class="card-title text-white">
+                Update Company Information
+              </h3>
+            </div>
+            <div class="card-body">
+              <form action="/dashboard/" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mx-4 text-center"> 
+                    <!-- Display errors for websiteForm -->
+                      {% if websiteForm.errors %}
+                      <ul class="errorlist">
+                          {% for error in websiteForm.errors %}
+                              <li>{{ error }}</li>
+                          {% endfor %}
+                      </ul>
+                  {% endif %}
+
+                  <!-- Display errors for walletForm -->
+                  {% if walletForm.errors %}
+                      <ul class="errorlist">
+                          {% for error in walletForm.errors %}
+                              <li>{{ error }}</li>
+                          {% endfor %}
+                      </ul>
+                  {% endif %}
+                </div>
+                <div class="row"> 
+                  {{websiteForm}}
+                  {{walletForm}}
+                </div>
+                <div class="text-center">
+                  <button class="btn btn-primary waves-effect waves-light" name="site_info" type="submit">
+                    Update Profile
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4">
+          <div class="card">
+            <div class="card-header bg-primary">
+              <h3 class="card-title text-white">
+                Change Login
+              </h3>
+            </div>
+            <div class="card-body">
+              <!-- <form action="" method="post">
+                <div class="form-group">
+                  <label>
+                    Username
+                  </label>
+                  <input class="form-control" name="username" placeholder="Username" type="text" value="Digital" />
+                </div>
+                <div class="form-group">
+                  <label>
+                    Current Password
+                  </label>
+                  <em class="text-warning" style="font-size: 0.8rem;">
+                  </em>
+                  <input class="form-control" name="password" placeholder="Current Password" type="password" />
+                </div>
+                <div class="form-group">
+                  <label>
+                    New Password
+                  </label>
+                  <em class="text-warning" style="font-size: 0.8rem;">
+                  </em>
+                  <input class="form-control" name="new_password" placeholder="New Password" type="password" />
+                </div>
+                <div class="form-group">
+                  <label>
+                    Retype New Password
+                  </label>
+                  <input class="form-control" name="new_password_retype" placeholder="Retype New Password"
+                    type="password" />
+                </div>
+                <div class="text-center">
+                  <button class="btn btn-primary waves-effect waves-light" name="update_username_password_admin"
+                    type="submit">
+                    Update Password
+                  </button>
+                </div>
+              </form> -->
+              <div class="text-center">
+                <button class="btn btn-primary waves-effect waves-light" name="update_username_password_admin"
+                  type="button">
+                   <a href="/accounts/password/change" style="color:whitesmoke">Update Password</a>
+                </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock content %}

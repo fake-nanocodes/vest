@@ -1,0 +1,82 @@
+{% extends 'user/main.html' %} {% load static %} {% block content %}
+<div class="main-panel">
+    <div class="card-header text-center">
+      <h4>
+        Kyc Verification
+      </h4>
+    </div>
+    <div class="row">
+      <div class='text-center px-2 py-3 w-100'> {% for message in messages %} <p class="text-center w-100"
+        style="font-size:1.1rem;">{{message}}</p> {% endfor %}</div>
+      {% comment %} <div class="col-12 col-xl-8">
+        <div class="card card-body border-0 shadow mb-4">
+          <h2 class="h5 mb-4">
+            Customer Verification Details
+          </h2>
+          {% if verified %}
+            <div class="h5 mb-4">
+                Hello {{user.username}}, Your account has been verified Successfully!!
+            </div>
+          {%else%}
+          <form class="forms-sample" action="/user/kyc" method="POST" enctype="multipart/form-data">
+            <div class="card card-body border-0 shadow mb-4">
+                <h4 class="h5 mb-4">
+                  To help make sure your funds are safe, please perform your identity Verification
+                </h4>
+                
+            {% csrf_token %}
+         
+            <div class="form-group">
+                <label for="formFile" class="form-label">First name as Indicated on your Means of Identification</label>
+                <input class="form-control" type="text" id="formFile" name="first_name" required placeholder="First Name">
+              </div>
+
+              <div class="form-group">
+                <label for="formFile" class="form-label">Last name as Indicated on your Means of Identification</label>
+                <input class="form-control" type="text" id="formFile" name="last_name" required placeholder="Last Name">
+              </div>
+
+              <div class="form-group">
+                <label for="formFile" class="form-label">Phone Number</label>
+                <input class="form-control" type="tel" id="formFile" name="phone" value="" required placeholder="phone number">
+              </div>
+
+              <div class="form-group">
+                <label for="formFile" class="form-label">Where do you live?</label>
+                <input class="form-control" type="textarea" id="formFile" placeholder="Address" name="address" required>
+              </div>
+
+            <div class="form-group">
+              <label for="formFile" class="form-label">Provide a copy of your Means of Identification please</label>
+              <input class="form-control" type="file" id="formFile" name="ids_type" required>
+            </div>
+
+            <div class="form-group">
+                <label for="formFile" class="form-label">Provide a copy of your Means of Address Verification please</label>
+                <input class="form-control" type="file" id="formFile" name="poa" required>
+              </div>
+            <button class="btn btn-success" name='update_info' type="submit">Upload Kyc Information</button>
+              
+          </form>
+          {%endif%}
+        </div>
+      </div> {% endcomment %}
+      <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="col-12 col-xl-8">
+          {% for field in form %}
+      <div class="form-group my-4{% if field.errors %}has-error{% endif %}">
+          {{ field.label_tag }}
+          {{ field }}
+          {% if field.errors %}
+              <p class="help-block">{{ field.errors }}</p>
+          {% endif %}
+      </div>
+  {% endfor %}
+  
+        </div>
+        <button type="submit" class="btn btn-dark-outline">Submit</button>
+      </form>
+      
+    </div>
+    {% endblock content %}

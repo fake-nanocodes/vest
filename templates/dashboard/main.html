@@ -1,0 +1,530 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="utf-8" />
+        <title>
+                Dashboard | Admin Control
+        </title>
+        <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport" />
+        <meta content="admin panel" name="description">
+        <meta content="#0173d4" name="theme-color" />
+        <meta content="" name="author">
+        <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+        <link href="{{ website.logo.url }}" rel="shortcut icon" />
+        <link href="{% static 'dashboard/plugins/datatables/jquery.dataTables.min.css' %}" rel="stylesheet"
+                type="text/css">
+        <link href="{% static 'dashboard/plugins/datatables/buttons.bootstrap4.min.css' %}" rel="stylesheet"
+                type="text/css" />
+        <link href="{% static 'dashboard/plugins/datatables/fixedHeader.bootstrap4.min.css' %}" rel="stylesheet"
+                type="text/css" />
+        <link href="{% static 'dashboard/plugins/datatables/responsive.bootstrap4.min.css' %}" rel="stylesheet"
+                type="text/css" />
+        <link href="{% static 'dashboard/plugins/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet"
+                type="text/css" />
+        <link href="{% static 'dashboard/plugins/datatables/scroller.bootstrap4.min.css' %}" rel="stylesheet"
+                type="text/css" />
+        <link href="{% static 'dashboard/assets/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'dashboard/assets/css/icons.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'dashboard/assets/css/style.css' %}" rel="stylesheet" type="text/css" />
+        <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.2.0/css/all.min.css"
+                integrity="sha512-6c4nX2tn5KbzeBJo9Ywpa0Gkt+mzCzJBrE1RB6fmpcsoN+b/w/euwIMuQKNyUoU/nToKN3a8SgNOtPrbW12fug=="
+                referrerpolicy="no-referrer" rel="stylesheet" />
+        <link href="{% static 'dashboard/plugins/modal-effect/css/component.css' %}" rel="stylesheet" />
+        <script src="{% static 'dashboard/assets/js/modernizr.min.js' %}">
+        </script>
+        <script src="{% static 'dashboard/assets/js/default.js' %}">
+        </script>
+        </link>
+        </meta>
+        </meta>
+</head>
+
+<body class="fixed-left">
+        <div id="wrapper">
+                <div class="topbar">
+                        <div class="topbar-left">
+                                <div class="text-center">
+                                        <a class="logo" href="/user/dashboard">
+                                                <i class="fa fa-gear">
+                                                </i>
+                                                <span>
+                                                       {{website.name}}
+                                                </span>
+                                        </a>
+                                </div>
+                        </div>
+                        <nav class="navbar navbar-default">
+                                <div class="container-fluid">
+                                        <ul class="list-inline menu-left mb-0">
+                                                <li class="float-left">
+                                                        <a class="button-menu-mobile open-left" href="#">
+                                                                <i class="fa fa-bars">
+                                                                </i>
+                                                        </a>
+                                                </li>
+                                        </ul>
+                                </div>
+                        </nav>
+                </div>
+                <div class="left side-menu">
+                        <div class="sidebar-inner slimscrollleft">
+                                <div class="user-details">
+                                        <div class="pull-left">
+                                                <img alt="" class="thumb-md rounded-circle" height="auto"
+                                                        src="{{ website.logo.url }}" width="30px" />
+                                        </div>
+                                        <div class="user-info">
+                                                <div class="dropdown">
+                                                        <a aria-expanded="false" aria-haspopup="true"
+                                                                class="dropdown-toggle" data-toggle="dropdown" href="">
+                                                               {{website.name}}
+                                                        </a>
+                                                        <ul class="dropdown-menu">
+                                                                <li>
+                                                                        <a class="dropdown-item" href="/accounts/logout">
+                                                                                <i class="md md-settings-power mr-2">
+                                                                                </i>
+                                                                                Logout
+                                                                        </a>
+                                                                </li>
+                                                        </ul>
+                                                </div>
+                                                <p class="text-muted m-0">
+                                                       {{request.user.username}}
+                                                </p>
+                                        </div>
+                                </div>
+                                <div id="sidebar-menu">
+                                        <ul>
+                                                <li>
+                                                        {% if messages %}
+                                                        <div>
+                                                          
+                                                          <ul>
+                                                            {% for message in messages %}
+                                                            <li>{{message}}</li>
+                                                            {% endfor %}
+                                                          </ul>
+                                                        </div>
+                                                        {% endif %}
+                                                </li>
+                                                <li>
+                                                        <a class="waves-effect" href="/user/dashboard">
+                                                                <i aria-hidden="true" class="fa fa-home">
+                                                                </i>
+                                                                <span>
+                                                                        Dashboard
+                                                                </span>
+                                                        </a>
+                                                </li>
+                                                <li class="has_sub">
+                                                        <a class="waves-effect subdrop" href="#">
+                                                                <i aria-hidden="true" class="fa fa-user-plus">
+                                                                </i>
+                                                                <span>
+                                                                        Members
+                                                                </span>
+                                                                <span class="pull-right">
+                                                                        <i aria-hidden="true"
+                                                                                class="fa fa-window-minimize">
+                                                                        </i>
+                                                                </span>
+                                                        </a>
+                                                        <ul class="list-unstyled" style="display: block;">
+                                                                <li class="">
+                                                                        <a href="/user/dashboard/users">
+                                                                                All Accounts
+                                                                        </a>
+                                                                </li>
+                                                                {% comment %} <li class="">
+                                                                        <a href="/user/dashboard/users2">
+                                                                                Active Accounts
+                                                                        </a>
+                                                                </li>
+                                                                <li class="">
+                                                                        <a href="3">
+                                                                                Deactivated Accounts
+                                                                        </a>
+                                                                </li> {% endcomment %}
+                                                        </ul>
+                                                </li>
+                                                <li class="has_sub">
+                                                        <a class="waves-effect subdrop" href="#">
+                                                                <i aria-hidden="true" class="fa fa-arrow-right">
+                                                                </i>
+                                                                <span>
+                                                                        Deposits
+                                                                </span>
+                                                                <span class="pull-right">
+                                                                        <i aria-hidden="true"
+                                                                                class="fa fa-window-minimize">
+                                                                        </i>
+                                                                </span>
+                                                        </a>
+                                                        <ul class="list-unstyled" style="display: block;">
+                                                                <li class="">
+                                                                        <a href="/deposit/dashboard/deposit">
+                                                                                All Deposits
+                                                                        </a>
+                                                                </li>
+                                                                
+                                                                <li class="">
+                                                                        <a href="/deposit/dashboard/deposit/completed">
+                                                                                Completed Deposits
+                                                                        </a>
+                                                                </li>
+                                                                <li class="">
+                                                                        <a href="/deposit/dashboard/deposit/pending">
+                                                                                Pending Deposits
+                                                                        </a>
+                                                                </li>
+                                                        </ul>
+                                                </li>
+                                                <li class="has_sub">
+                                                        <a class="waves-effect subdrop" href="#">
+                                                                <i aria-hidden="true" class="fa fa-reply">
+                                                                </i>
+                                                                <span>
+                                                                        Withdrawal
+                                                                </span>
+                                                                <span class="pull-right">
+                                                                        <i aria-hidden="true"
+                                                                                class="fa fa-window-minimize">
+                                                                        </i>
+                                                                </span>
+                                                        </a>
+                                                        <ul class="list-unstyled" style="display: block;">
+                                                                <li class="">
+                                                                        <a href="/withdraw/dashboard/withdraw">
+                                                                                All Withdrawal
+                                                                        </a>
+                                                                </li>
+                                                                <li class="">
+                                                                        <a href="/withdraw/dashboard/withdraw/completed">
+                                                                                Completed Withdrawal
+                                                                        </a>
+                                                                </li>
+                                                                <li class="">
+                                                                        <a href="/withdraw/dashboard/withdraw/pending">
+                                                                                Pending Withdrawal
+                                                                        </a>
+                                                                </li>
+                                                        </ul>
+                                                </li>
+                                                <li class="has_sub">
+                                                        <a class="waves-effect subdrop" href="#">
+                                                                <i aria-hidden="true" class="fa fa-retweet">
+                                                                </i>
+                                                                <span>
+                                                                        Transactions
+                                                                </span>
+                                                                <span class="pull-right">
+                                                                        <i aria-hidden="true"
+                                                                                class="fa fa-window-minimize">
+                                                                        </i>
+                                                                </span>
+                                                        </a>
+                                                        <ul class="list-unstyled" style="display: block;">
+                                                                <li class="">
+                                                                        <a href="/transaction/dashboard">
+                                                                                All Transactions
+                                                                        </a>
+                                                                </li>
+                                                                <li class="">
+                                                                        <a href="/transaction/dashboard/completed">
+                                                                                Completed Transactions
+                                                                        </a>
+                                                                </li>
+                                                                <li class="">
+                                                                        <a href="/transaction/dashboard/pending">
+                                                                                Pending Transactions
+                                                                        </a>
+                                                                </li>
+                                                        </ul>
+                                                </li>
+                                                <li class="has_sub">
+                                                        <a class="waves-effect subdrop" href="#">
+                                                                <i aria-hidden="true" class="fa fa-wrench">
+                                                                </i>
+                                                                <span>
+                                                                        Settings
+                                                                </span>
+                                                                <span class="pull-right">
+                                                                        <i aria-hidden="true"
+                                                                                class="fa fa-window-minimize">
+                                                                        </i>
+                                                                </span>
+                                                        </a>
+                                                        <ul class="list-unstyled" style="display: block;">
+                                                                <li class="">
+                                                                        <a href="/plans/dashboard">
+                                                                                Deposit Plans
+                                                                        </a>
+                                                                </li>
+                                                                <li class="">
+                                                                        <a href="/testimony/dashboard">
+                                                                                Add Testimonials
+                                                                        </a>
+                                                                </li>
+                                                                <li class="">
+                                                                        <a href="/faq/dashboard">
+                                                                                Add FAQs
+                                                                        </a>
+                                                                </li>
+                                                                {% comment %} <li class="">
+                                                                        <a href="/dashboard/setting4">
+                                                                                Set Deposit/Withdrawal Charges
+                                                                        </a>
+                                                                </li> {% endcomment %}
+                                                                <li class="">
+                                                                        <a href="/statistic/dashboard">
+                                                                                Extra Statistics
+                                                                        </a>
+                                                                </li>
+                                                        </ul>
+                                                </li>
+                                                <li class="has_sub">
+                                                        <a class="waves-effect subdrop" href="#">
+                                                                <i aria-hidden="true" class="fa fa-gift">
+                                                                </i>
+                                                                <span>
+                                                                        Reward
+                                                                </span>
+                                                                <span class="pull-right">
+                                                                        <i aria-hidden="true"
+                                                                                class="fa fa-window-minimize">
+                                                                        </i>
+                                                                </span>
+                                                        </a>
+                                                        <ul class="list-unstyled" style="display: block;">
+                                                                <li class="">
+                                                                        <a href="/bonus/dashboard">
+                                                                                Send Bonus
+                                                                        </a>
+                                                                </li>
+                                                                <li class="">
+                                                                        <a href="/penalty/dashboard">
+                                                                                Send Penalty
+                                                                        </a>
+                                                                </li>
+                                                        </ul>
+                                                </li>
+                                                <li class="has_sub">
+                                                        <a class="waves-effect subdrop" href="#">
+                                                                <i aria-hidden="true" class="fa fa-envelope">
+                                                                </i>
+                                                                <span>
+                                                                        Message
+                                                                </span>
+                                                                <span class="pull-right">
+                                                                        <i aria-hidden="true"
+                                                                                class="fa fa-window-minimize">
+                                                                        </i>
+                                                                </span>
+                                                        </a>
+                                                        <ul class="list-unstyled" style="display: block;">
+                                                                {% comment %} <li class="">
+                                                                        <a href="/dashboard/msg">
+                                                                                Read Messages
+                                                                        </a>
+                                                                </li> {% endcomment %}
+                                                                <li class="">
+                                                                        <a href="/contact/dashboard">
+                                                                                Send Bulk Mail
+                                                                        </a>
+                                                                </li>
+                                                        </ul>
+                                                </li>
+                                                <li>
+                                                        <a class="waves-effect" href="/accounts/logout">
+                                                                <i aria-hidden="true" class="fa fa-power-off">
+                                                                </i>
+                                                                <span>
+                                                                        Logout
+                                                                </span>
+                                                        </a>
+                                                </li>
+                                        </ul>
+                                        <div class="clearfix">
+                                        </div>
+                                </div>
+                                <div class="clearfix">
+                                </div>
+                        </div>
+                </div>
+
+    
+                {% block content %}{% endblock content %}
+                <footer class="footer text-right">
+                    2023 ©
+                   </footer>
+                   <script>
+                    function hide_hint() {
+                   $.ajax({
+                   type: "POST",
+                   url: 'ajax.php',
+                   data:'hide_hint='+1,
+                   success: function(data){
+                       $().html(data);
+                   }
+                   });
+               }
+                   </script>
+                  </div>
+                 </div>
+                 <script>
+                  var resizefunc = [];
+                 </script>
+                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+                 <script src="{% static 'dashboard/assets/js/jquery.min.js' %}">
+                 </script>
+                 <script src="{% static 'dashboard/assets/js/bootstrap.bundle.min.js' %}">
+                 </script>
+                 <script src="{% static 'dashboard/assets/js/detect.js' %}">
+                 </script>
+                 <script src="{% static 'dashboard/assets/js/fastclick.js' %}">
+                 </script>
+                 <script src="{% static 'dashboard/assets/js/jquery.slimscroll.js' %}">
+                 </script>
+                 <script src="{% static 'dashboard/assets/js/jquery.blockUI.js' %}">
+                 </script>
+                 <script src="{% static 'dashboard/assets/js/waves.js' %}">
+                 </script>
+                 <script src="{% static 'dashboard/assets/js/wow.min.js' %}">
+                 </script>
+                 <script src="{% static 'dashboard/assets/js/jquery.nicescroll.js' %}">
+                 </script>
+                 <script src="{% static 'dashboard/assets/js/jquery.scrollTo.min.js' %}">
+                 </script>
+                 <script src="{% static 'dashboard/plugins/datatables/jquery.dataTables.min.js' %}">
+                 </script>
+                 <script src="{% static 'dashboard/plugins/datatables/dataTables.bootstrap4.min.js' %}">
+                 </script>
+                 <script src="{% static 'dashboard/plugins/datatables/dataTables.buttons.min.js' %}">
+                 </script>
+                 <script src="{% static 'dashboard/plugins/datatables/buttons.bootstrap4.min.js' %}">
+                 </script>
+                 <script src="{% static 'dashboard/plugins/datatables/jszip.min.js' %}">
+                 </script>
+                 <script src="{% static 'dashboard/plugins/datatables/pdfmake.min.js' %}">
+                 </script>
+                 <script src="{% static 'dashboard/plugins/datatables/vfs_fonts.js' %}">
+                 </script>
+                 <script src="{% static 'dashboard/plugins/datatables/buttons.html5.min.js' %}">
+                 </script>
+                 <script src="{% static 'dashboard/plugins/datatables/buttons.print.min.js' %}">
+                 </script>
+                 <script src="{% static 'dashboard/plugins/datatables/dataTables.fixedHeader.min.js' %}">
+                 </script>
+                 <script src="{% static 'dashboard/plugins/datatables/dataTables.keyTable.min.js' %}">
+                 </script>
+                 <script src="{% static 'dashboard/plugins/datatables/dataTables.scroller.min.js' %}">
+                 </script>
+                 <script src="{% static 'dashboard/plugins/datatables/dataTables.responsive.min.js' %}">
+                 </script>
+                 <script src="{% static 'dashboard/plugins/datatables/responsive.bootstrap4.min.js' %}">
+                 </script>
+                 <script src="{% static 'dashboard/assets/pages/datatables.init.js' %}">
+                 </script>
+                 <script src="{% static 'dashboard/assets/js/jquery.app.js' %}">
+                 </script>
+                 <script>
+                  function hide_element(x) {
+                       document.querySelector(x).style.display='none';
+               }
+               
+               function show_element(x) {
+                       document.querySelector(x).style.display='block';
+               }
+               
+               function triggerClick(x){
+                document.querySelector(x).click();
+               }
+               
+               function show_settings_modal(y,val,x,b) {
+                       show_element('#loader');
+                   $.ajax({
+                   type: "POST",
+                   url: 'includes/ajax.php',
+                       data: {setting_id: y, item: val},
+                   success: function(data){
+                       $(x).html(data);
+                               hide_element('#loader');
+                               triggerClick(b);
+                   }
+                   });
+               }
+               
+                     function show_trans_modal(y,val,x,b) {
+                       show_element('#loader');
+                   $.ajax({
+                   type: "POST",
+                   url: 'includes/ajax.php',
+                       data: {user: y, trans_id: val},
+                   success: function(data){
+                       $(x).html(data);
+                               hide_element('#loader');
+                               triggerClick(b);
+                   }
+                   });
+               }
+               
+                     function show_wallet_modal(val,x,b) {
+                       show_element('#loader');
+                   $.ajax({
+                   type: "POST",
+                   url: 'includes/ajax.php',
+                       data: {wallet_id: val},
+                   success: function(data){
+                       $(x).html(data);
+                               hide_element('#loader');
+                               triggerClick(b);
+                   }
+                   });
+               }
+               
+               function show_del_modal(y,val,x,b,p) {
+                       show_element('#loader');
+                   $.ajax({
+                   type: "POST",
+                   url: 'includes/ajax.php',
+                       data: {user: y, del_id: val, para: p},
+                   success: function(data){
+                       $(x).html(data);
+                               hide_element('#loader');
+                               triggerClick(b);
+                   }
+                   });
+               }
+               
+               function show_del_settings(y,val,x,b) {
+                       show_element('#loader');
+                   $.ajax({
+                   type: "POST",
+                   url: 'includes/ajax.php',
+                       data: {setting_del: y, del_set_id: val},
+                   success: function(data){
+                       $(x).html(data);
+                               hide_element('#loader');
+                               triggerClick(b);
+                   }
+                   });
+               }
+                 </script>
+                 <script>
+                  $(document).ready(function() {
+                       $('#datatable').dataTable();
+                       $('#datatable2').dataTable();
+                       $('#datatable3').dataTable();
+                       $('#datatable-keytable').DataTable( { keys: true } );
+                       $('#datatable-responsive').DataTable();
+                       $('#datatable-scroller').DataTable( { ajax: "plugins/datatables/json/scroller-demo.json", deferRender: true, scrollY: 380, scrollCollapse: true, scroller: true } );
+                       var table = $('#datatable-fixed-header').DataTable( { fixedHeader: true } );
+                   } );
+                   TableManageButtons.init();
+                 </script>
+                </body>
+               </html>

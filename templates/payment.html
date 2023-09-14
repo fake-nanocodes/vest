@@ -1,0 +1,91 @@
+
+{% extends 'main.html' %}{% load static %}{% block content %}
+   <script language="javascript">
+    function go(p)
+{
+	document.opts.page.value=p;
+	document.opts.submit();
+}
+   </script>
+   <meta charset="utf-8"/>
+   <meta content="width=1024, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+   <div class="page-head section row-vm light">
+    <div class="imagebg">
+     <img alt="page-head" src="{% static 'images/page-inside-bg.jpg' %}"/>
+    </div>
+    <div class="container">
+     <div class="row text-center">
+      <div class="col-md-12">
+       <h2>
+        Paid Out
+       </h2>
+       <div class="page-breadcrumb">
+        <ul class="breadcrumb">
+         <li>
+          <a href="/">
+           Home
+          </a>
+         </li>
+         <li class="active">
+          <span>
+           Paid Out
+          </span>
+         </li>
+        </ul>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <!-- #end Banner/Slider -->
+   <!-- Section -->
+   <div class="section section-pad bg-grey">
+    <div class="container">
+     <div class="row">
+      <div class="col-md-7 res-m-bttm">
+       <form method="post" name="opts">
+        <input name="form_id" type="hidden" value="16697259509284"/>
+        <input name="form_token" type="hidden" value="45d4c1a4f6b19900754176957ab9c380"/>
+        <input name="form_id" type="hidden" value="16096512498388"/>
+        <input name="form_token" type="hidden" value="1a8dbee4e200f79698082299ac6d34e1"/>
+        <input name="a" type="hidden" value="paidout"/>
+        <input name="page" type="hidden" value=""/>
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+         <tr>
+          <td>
+           <h3>
+            Paid Out:
+           </h3>
+           <iframe frameborder="0" id="iframe2" src="https://globalprofit.ltd/app_api_v2.php" style="overflow: hidden; height: 600px;
+        width: 100%;">
+           </iframe>
+          </td>
+         </tr>
+        </table>
+       </form>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="col-md-4 col-md-offset-1">
+    <div class="wgs-menu mb-x2">
+     <h5 class="wgs-title">
+     </h5>
+     <div class="wgs-content">
+     </div>
+    </div>
+    <div class="wgs-contact-info">
+     <div class="wgs-content boxed">
+      <div class="contact-information">
+       <div class="contact-entry">
+       </div>
+       <div class="gaps size-1x">
+       </div>
+       <div class="contact-entry">
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <!-- End Section -->
+   {% endblock content %}

@@ -1,0 +1,61 @@
+{% extends 'user/main.html' %} {% load static %} {% block content %}
+    <div class="main-panel">
+     <div class="col-lg-6 grid-margin stretch-card table-responsive" style="width: 100%;">
+      <div class="card">
+       <div class="card-body">
+        <h4 class="card-title">
+         All Withdrawal
+        </h4>
+        <table class="table table-hover">
+         <thead>
+          <tr>
+           <th>
+            #
+           </th>
+           <th>
+            Amount
+           </th>
+           <th>
+            Withdrawal Date
+           </th>
+           <th>
+            Method
+           </th>
+           <th>
+            Address
+           </th>
+           <th>
+            Status
+           </th>
+          </tr>
+         </thead>
+         <tbody>
+            {% for withdraw in withdraws %}
+            <tr>
+              <td>
+                  {{ forloop.counter }}
+              </td>
+              <td>
+              {{ withdraw.amount }}
+              </td>
+              <td>
+               {{ withdraw.created }}
+              </td>
+              <td>
+               {{withdraw.wallet_type}}
+              </td>
+              <td>
+               {{ withdraw.wallet_address }}
+              </td>
+              <td><label class="badge badge-danger">Pending</label></td>
+             </tr>
+            {% empty %}
+            <p class="text-center"> you have not made any withdrawals </p>
+            {% endfor %}
+          
+         </tbody>
+        </table>
+       </div>
+      </div>
+     </div>
+     {% endblock content %}

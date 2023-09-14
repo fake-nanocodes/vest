@@ -1,0 +1,186 @@
+{% load static %}
+{% extends 'main.html' %}{% load static %}{% block content %}
+   <div class="page-head section row-vm light">
+    <div class="imagebg">
+     <img alt="page-head" src="{% static 'images/page-inside-bg.jpg' %}"/>
+    </div>
+    <div class="container">
+     <div class="row text-center">
+      <div class="col-md-12">
+       <h2>
+        Banners
+       </h2>
+       <div class="page-breadcrumb">
+        <ul class="breadcrumb">
+         <li>
+          <a href="/">
+           Home
+          </a>
+         </li>
+         <li class="active">
+          <span>
+           Banners
+          </span>
+         </li>
+        </ul>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <!-- #end Banner/Slider -->
+   <div class="section section-pad bg-grey">
+    <div class="container">
+     <div class="row">
+      <div class="col-md-7 res-m-bttm">
+       <a href="https://www.centennial-investment.com/?ref=">
+        The best internet investment
+        <br/>
+        Earn a 10% daily profit!
+       </a>
+       <br/>
+       <br/>
+       <textarea class="inpts" cols="60" rows="4">
+						  <a href="https://www.centennial-investment.com/?ref=">
+						  The best internet investment<br/>
+						  Earn a 10% daily profit!
+						  </a>
+						  </textarea>
+       <br/>
+       <br/>
+       <br/>
+       <a href="https://www.centennial-investment.com/?ref=">
+        www.centennial-investment.com.
+        <br/>
+        Easy. Safe. No risk.
+       </a>
+       <br/>
+       <br/>
+       <textarea class="inpts" cols="60" rows="4">
+						  <a href="https://www.centennial-investment.com/?ref=">
+						  www.centennial-investment.com.<br/>
+						  Easy. Safe. No risk.
+						  </a>
+						  </textarea>
+       <br/>
+       <br/>
+       <br/>
+       <a href="https://www.centennial-investment.com/?ref=">
+        25% for 2 days - total 25% guaranteed
+       </a>
+       <br/>
+       <br/>
+       <textarea class="inpts" cols="60" rows="4">
+						  <a href="https://www.centennial-investment.com/?ref=">
+						  25% for 2 days - total 25% guaranteed
+						  </a>
+						  </textarea>
+       <br/>
+       <br/>
+       <br/>
+      </div>
+      <div class="col-md-4 col-md-offset-1">
+       <div class="sidebar-right wgs-box bg-white pd-x3">
+        <div class="wgs-menu mb-x2">
+         <h5 class="wgs-title">
+          Member LogIn
+         </h5>
+         <div class="wgs-content">
+          <script language="javascript">
+           function checklogin() {
+  if (document.loginform.username.value=='') {
+    alert("Please enter your username!");
+    document.loginform.username.focus();
+    return false;
+  }
+  if (document.loginform.password.value=='') {
+    alert("Please enter your password!");
+    document.loginform.password.focus();
+    return false;
+  }
+  return true;
+}
+          </script>
+          <form method="post" name="loginform" onsubmit="return checklogin()">
+           <input name="form_id" type="hidden" value="16697259553628"/>
+           <input name="form_token" type="hidden" value="babd44935ae3ebb7601d602b0ccf4c72"/>
+           <input name="form_id" type="hidden" value="16096188739239"/>
+           <input name="form_token" type="hidden" value="f02c1f7c743cbeb0aa19fb400014038b"/>
+           <input name="a" type="hidden" value="do_login"/>
+           <input name="follow" type="hidden" value=""/>
+           <tr>
+            <th colspan="2">
+             <img height="3" src="{% static 'images/q.gif' %}" width="1"/>
+            </th>
+           </tr>
+           <tr>
+            <th class="title" colspan="2">
+             Member login
+            </th>
+           </tr>
+           <tr>
+            <td class="menutxt">
+             Username:
+            </td>
+            <td>
+             <input class="form-control" name="username" size="15" type="text"/>
+            </td>
+           </tr>
+           <tr>
+            <td class="menutxt">
+             Password:
+            </td>
+            <td>
+             <input class="form-control" name="password" size="15" type="password"/>
+            </td>
+           </tr>
+           <tr>
+            <td class="menutxt">
+            </td>
+            <td>
+             <input class="btn" size="15" type="submit" value="Login"/>
+            </td>
+           </tr>
+           <tr>
+            <td align="right" colspan="2">
+             <a class="menutxt" href="/forgot?a=forgot_password">
+              Password recovery
+             </a>
+            </td>
+           </tr>
+          </form>
+         </div>
+        </div>
+        <div class="wgs-contact-info">
+         <div class="wgs-content boxed">
+          <div class="contact-information">
+           <div class="contact-entry">
+            <h6>
+             www.centennial-investment.com
+            </h6>
+            <p>
+             370 Camino Gardens Blvd
+             <br>
+              Boca Raton, Florida 33432
+             </br>
+            </p>
+           </div>
+           <div class="gaps size-1x">
+           </div>
+           <div class="contact-entry">
+            <h6>
+             Contact number
+            </h6>
+            <p>
+             Phone:  +1 (213) 948-2402
+            </p>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   {% endblock content %}

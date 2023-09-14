@@ -1,0 +1,370 @@
+{% load static %}
+<!DOCTYPE html>
+<html class="js" lang="zxx">
+ <!-- Mirrored from centennial-investment.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 29 Nov 2022 12:48:21 GMT -->
+ <!-- Added by HTTrack -->
+ <meta content="text/html;charset=utf-8" http-equiv="content-type"/>
+ <!-- /Added by HTTrack -->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="" name="description"/>
+  <!-- Fav Icon  -->
+  <link href="{{ website.logo.url}}" rel="shortcut icon"/>
+  <!-- Site Title  -->
+  <title>
+   {{site.name}}
+  </title>
+  <meta href="https://uniquehyips.com/" name="designer"/>
+  <!-- Vendor Bundle CSS -->
+  <link href="{% static 'assets/css/vendor.bundle.css' %}" rel="stylesheet"/>
+  <!-- Custom styles for this template -->
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet"/>
+  <link href="{% static 'assets/css/theme.css' %}" rel="stylesheet"/>
+    <!-- Vendor Bundle CSS -->
+
+<!-- 
+    <link rel="stylesheet" href="{% static 'css/vendor.bundle.css' %}"> -->
+    <!-- Custom styles for this template -->
+    <!-- <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/theme.css' %}" rel="stylesheet"> -->
+  
+  <link href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" rel="stylesheet">
+   <div text-align="right" class="lang wow bounceIn">
+    <div id="google_translate_element">
+    </div>
+    {% comment %} <script>
+     function googleTranslateElementInit() {
+                new google.translate.TranslateElement({
+                    pageLanguage: 'en'
+                }, 'google_translate_element');
+            }
+    </script>
+    <script src="{% static '../translate.google.com/translate_a/elementa0d8.js?cb=googleTranslateElementInit' %}">
+    </script> {% endcomment %}
+   </div>
+  </link>
+ </head>
+ <body>
+  <!-- Header -->
+  <header class="site-header header-s1 is-sticky">
+   <!-- Topbar -->
+   <!-- <div class="topbar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <ul class="social">
+                            <li><a href="#"><em class="fa fa-facebook"></em></a></li>
+                            <li><a href="#"><em class="fa fa-twitter"></em></a></li>
+                            <li><a href="#"><em class="fa fa-linkedin"></em></a></li>
+                            <li><a href="#"><em class="fa fa-google-plus"></em></a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6 al-right">
+                        <ul class="top-nav">
+                            <li><a href="/faq">Faq</a></li>
+                            <li><a href="/contact">Support</a></li>
+                                                        <li><a href="/accounts/login">Login</a></li>
+                            <li><a href="/accounts/signup">Register</a></li>
+                                                    </ul>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+   <!-- End Topbar -->
+   <!-- Navbar -->
+   <div class="navbar navbar-primary">
+    <div class="container relative">
+     <!-- Logo -->
+     <a class="navbar-brand" href="/">
+      <img alt="logo" class="logo logo-dark" src="{{ website.logo.url }}"/>
+      <img alt="logo" class="logo logo-light" src="{{ website.logo.url }}"/>
+     </a>
+     <!-- #end Logo -->
+     <div class="navbar-header">
+      <button aria-expanded="false" class="navbar-toggle collapsed" data-target="#mainnav" data-toggle="collapse" type="button">
+       <span class="sr-only">
+        Menu
+       </span>
+       <span class="icon-bar">
+       </span>
+       <span class="icon-bar">
+       </span>
+       <span class="icon-bar">
+       </span>
+      </button>
+      <div class="quote-btn">
+       <a class="btn" href="/accounts/login">
+        <span>
+         Register
+        </span>
+       </a>
+      </div>
+      <div class="quote-btn">
+       <a class="btn" href="/accounts/signup">
+        <span>
+         Login
+        </span>
+       </a>
+      </div>
+     </div>
+     <!-- MainNav -->
+     <nav class="navbar-collapse collapse" id="mainnav">
+      <ul class="nav navbar-nav">
+       <li>
+        <a href="/">
+         Home
+        </a>
+       </li>
+       <li>
+        <a href="/about">
+         About Us
+        </a>
+       </li>
+       <li>
+        <a href="/payment">
+         Payments
+        </a>
+       </li>
+       <li>
+        <a href="/plans">
+         Investment Plans
+        </a>
+       </li>
+       <li>
+        <a href="/faq">
+         Faq
+        </a>
+       </li>
+       <li>
+        <a href="/contact">
+         Contact
+        </a>
+       </li>
+       
+        {% if user.is_authenticated %}
+        <li class="quote-btn hidden-xs hidden-sm">
+          <a class="btn" href="/accounts/logout">
+            Logout
+          </a>
+        </li>
+        {% else %}
+        <li class="quote-btn hidden-xs hidden-sm">
+          <a class="btn" href="/accounts/signup">
+            Get started
+          </a>
+        </li>
+        {% endif %}
+        
+       
+      </ul>
+     </nav>
+     <!-- #end MainNav -->
+    </div>
+   </div>
+   <!-- End Navbar -->
+   <!-- End Navbar -->
+   <div class="col-lg-12 col-md-12">
+    <div class="top-header-contact-info text-end">
+        <div id="ytWidget" style="float: right !important;     position: fixed; z-index: 1000;right: 10px;bottom: 100px;"></div><script src={{ google_translate_link }} type="text/javascript"></script>
+        
+        
+        <style>
+            
+            .yt-wrapper yt-wrapper_align_right, .yt-servicelink {display: none !important;
+                
+            }
+            
+        </style>
+        
+    </div>
+</div>
+   {% block content %}
+   
+   {% endblock content %}
+
+     <!-- Section Footer -->
+  <div class="footer-section section section-pad-md light bg-footer">
+    <div class="imagebg footerbg">
+     <img alt="footer-bg" src="{% static 'images/footer-bg.png' %}"/>
+    </div>
+    <div class="container">
+     <div class="row">
+      <div class="col-md-3 col-sm-6 wgs-box res-m-bttm-lg">
+       <!-- Each Widget -->
+       <div class="wgs-footer wgs-menu">
+        <h5 class="wgs-title ucap">
+         Main Navigation
+        </h5>
+        <div class="wgs-content">
+         <ul class="menu">
+          <li>
+           <a href="/">
+            Home
+           </a>
+          </li>
+          <li>
+           <a href="/about">
+            About Us
+           </a>
+          </li>
+          <li>
+           <a href="/payment">
+            Payments
+           </a>
+          </li>
+          <li>
+           <a href="/plans">
+            Investment Plans
+           </a>
+          </li>
+          <li>
+           <a href="/contact">
+            Support
+           </a>
+          </li>
+         </ul>
+        </div>
+       </div>
+       <!-- End Widget -->
+      </div>
+      <div class="col-md-3 col-sm-6 wgs-box res-m-bttm-lg">
+       <!-- Each Widget -->
+       <div class="wgs-footer wgs-menu">
+        <h5 class="wgs-title ucap">
+        </h5>
+        <div class="wgs-content">
+         <ul class="menu">
+         </ul>
+        </div>
+       </div>
+       <!-- End Widget -->
+      </div>
+      <div class="col-md-3 col-sm-6 wgs-box res-m-bttm-lg">
+      </div>
+      <div class="col-md-3 col-sm-6 wgs-box res-m-bttm">
+       <!-- Each Widget -->
+       <div class="wgs-footer wgs-contact">
+        <h5 class="wgs-title ucap">
+         get in touch
+        </h5>
+        <div class="wgs-content">
+         <ul class="wgs-contact-list">
+          <li>
+           <span class="pe pe-7s-map-marker">
+           </span>
+           {{ site.address }}
+          </li>
+          <li>
+           <span class="pe pe-7s-global">
+           </span>
+           Email :
+           <a href="mailto:{{ site.email }}">
+            {{ site.email }}
+           </a>
+          </li>
+         </ul>
+        </div>
+       </div>
+       <!-- End Widget -->
+      </div>
+     </div>
+    </div>
+   </div>
+   <!-- End Section -->
+   <!-- Copyright -->
+   <div class="copyright light">
+    <div class="container">
+     <div class="row">
+      <div class="site-copy col-sm-7">
+       <p>
+        Copyright © 2021 www.{{site.name}}.com.
+       </p>
+      </div>
+      <div class="col-sm-5 text-right mobile-left">
+       <ul class="social">
+        <li>
+         <a href="#">
+          <em class="fa fa-facebook">
+          </em>
+         </a>
+        </li>
+        <li>
+         <a href="#">
+          <em class="fa fa-twitter">
+          </em>
+         </a>
+        </li>
+        <li>
+         <a href="#">
+          <em class="fa fa-linkedin">
+          </em>
+         </a>
+        </li>
+        <li>
+         <a href="#">
+          <em class="fa fa-google-plus">
+          </em>
+         </a>
+        </li>
+       </ul>
+      </div>
+     </div>
+    </div>
+   </div>
+   <!-- End Copyright -->
+   <!-- Preloader !remove please if you do not want -->
+   <div id="preloader">
+    <div id="status">
+    </div>
+   </div>
+   <!-- Preloader End -->
+   <!-- JavaScript
+         ================================================== -->
+   <!-- Placed at the end of the document so the pages load faster -->
+   <script src="{% static 'js/jquery.bundle.js' %}">
+   </script>
+   <script src="{% static 'js/script.js' %}">
+   </script>
+   <script>
+    (function(b, i, t, C, O, I, N) {
+             window.addEventListener('load', function() {
+                 if (b.getElementById(C)) return;
+                 I = b.createElement(i), N = b.getElementsByTagName(i)[0];
+                 I.src = t;
+                 I.id = C;
+                 N.parentNode.insertBefore(I, N);
+             }, false)
+         })(document, 'script', '../widgets.bitcoin.com/widget.js', 'btcwdgt');
+   </script>
+   <!-- Swiper JS -->
+   <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js">
+   </script>
+   <!-- Initialize Swiper -->
+   <script>
+    var swiper = new Swiper(".mySwiper", {
+      spaceBetween: 30,
+      centeredSlides: true,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+   </script>
+   
+
+  </body>
+  <!-- Mirrored from centennial-investment.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 29 Nov 2022 12:48:21 GMT -->
+ </html>
+ <script type="text/javascript">
+  window.$crisp=[];window.CRISP_WEBSITE_ID="d86a790f-0e46-4347-be93-b06251c8a518";(function(){ d=document;s=d.createElement("script"); s.src="../client.crisp.chat/l.js"; s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();
+ </script>
+ 

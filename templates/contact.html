@@ -1,0 +1,131 @@
+{% extends 'main.html' %}{% load static %}{% block content %}
+   <div class="page-head section row-vm light">
+    <div class="imagebg">
+     <img alt="page-head" src="{% static 'images/page-inside-bg.jpg' %}"/>
+    </div>
+    <div class="container">
+     <div class="row text-center">
+      <div class="col-md-12">
+       <h2>
+        Contact Us
+       </h2>
+       <div class="page-breadcrumb">
+        <ul class="breadcrumb">
+         <li>
+          <a href="/">
+           Home
+          </a>
+         </li>
+         <li class="active">
+          <span>
+           Support
+          </span>
+         </li>
+        </ul>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <!-- #end Banner/Slider -->
+   <script language="javascript">
+    function checkform() {
+  if (document.mainform.name.value == '') {
+    alert("Please type your full name!");
+    document.mainform.name.focus();
+    return false;
+  }
+  if (document.mainform.email.value == '') {
+    alert("Please enter your e-mail address!");
+    document.mainform.email.focus();
+    return false;
+  }
+  if (document.mainform.message.value == '') {
+    alert("Please type your message!");
+    document.mainform.message.focus();
+    return false;
+  }
+  return true;
+}
+   </script>
+   <!-- Section -->
+   <div class="section section-pad">
+    <div class="container">
+     <div class="row">
+      <div class="col-md-8 res-m-bttm">
+       <div class="contact-information">
+        <h4>
+         Contact Information
+        </h4>
+        <div class="row">
+         <div class="col-sm-4 res-m-bttm">
+          <div class="contact-entry">
+           <h6>
+            <span>
+            {{ site.name }}.com
+            </span>
+           </h6>
+           <p>
+            {{ site.address }}
+           </p>
+          </div>
+         </div>
+         <div class="col-sm-4 res-m-bttm">
+          <div class="contact-entry">
+           <h6>
+            contact number
+           </h6>
+           <p>
+            phone:  {{ site.phone_number}}
+            <br/>
+           </p>
+          </div>
+         </div>
+         <div class="col-sm-4 res-m-bttm">
+          <div class="contact-entry">
+           <h6>
+            office hours
+           </h6>
+           <p>
+            monday - friday
+            <br/>
+            8:30am - 5:00pm
+           </p>
+          </div>
+         </div>
+        </div>
+       </div>
+       <div class="contact-form">
+        <p>
+         Complete and submit the form below
+        </p>
+        <form class="form-message" method="post" name="mainform" onsubmit="return checkform()">
+         <input name="form_id" type="hidden" value="16697259434436"/>
+         <input name="form_token" type="hidden" value="d5e1eefa1d9436ce11462fb7a07b8a37"/>
+         <input name="a" type="hidden" value="support"/>
+         <input name="action" type="hidden" value="send"/>
+         <div class="form-results">
+         </div>
+         <div class="form-group row">
+          <div class="form-field col-sm-6 form-m-bttm">
+           <input class="form-control" name="name" placeholder="Full Name *" size="30" type="text" value=""/>
+          </div>
+          <div class="form-field col-sm-6">
+           <td>
+            <input class="form-control" name="email" placeholder="Email *" size="30" type="text" value=""/>
+           </td>
+          </div>
+         </div>
+         <div class="form-group row">
+          <div class="form-field col-md-12">
+           <textarea class="txtarea form-control required" name="contact-message" placeholder="Messages *"></textarea>
+          </div>
+         </div>
+         <input class="hidden" name="form-anti-honeypot" type="text" value=""/>
+         <button class="btn btn-alt" type="submit">
+          Submit
+         </button>
+        </form>
+       </div>
+      </div>
+      {% endblock content %}
