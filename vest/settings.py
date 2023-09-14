@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'allauth',
     'allauth.account',
+    'allauth.socialaccount',
     'userprofile.apps.UserprofileConfig',
     'deposit.apps.DepositConfig',
     'walletaddress.apps.WalletaddressConfig',
