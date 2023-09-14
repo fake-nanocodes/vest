@@ -169,7 +169,7 @@ LOGIN_REDIRECT_URL = '/user/'
 
 #ACCOUNT_SIGNUP_REDIRECT_URL = '/'
 
-#CSRF_TRUSTED_ORIGINS = ['https://*.crestexperts.com']
+CSRF_TRUSTED_ORIGINS = ['https://*.vest-production.up.railway.app']
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
