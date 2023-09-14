@@ -10,9 +10,14 @@ def website (request):
     return { 'website': site}
 
 def configs(request):
+    
     if settings.GOOGLE_TRANSLATE_LINK and settings.CHAT_BOT:
         return {
             'google_translate_link' : settings.GOOGLE_TRANSLATE_LINK,
             'chat_bot' : settings.CHAT_BOT,
         }
-            
+    else:
+        return {
+            'google_translate_link' : None,
+            'chat_bot' : None,
+        }
